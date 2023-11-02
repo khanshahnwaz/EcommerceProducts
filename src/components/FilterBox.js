@@ -16,34 +16,32 @@ const FilterBox = (props) => {
     setDesignation('');
   }
   return (
-    <div className='xl:w-4/5 mx-auto px-5 py-2'>
-      <div className='flex justify-between py-2 rounded-md border-2 border-gray-200 my-2 gap-x-2 '>
-        <div className='px-5 py-1 flex bg-white rounded-md'>  
-        <FiSearch className='m-auto '/>   
-    <input placeholder='Search by any publication parameter' className='w-full px-4 py-1 rounded outline-none' value={search} onChange={(e)=>props.setSearch(e.target.value)}/>
+    <div className='2xl:w-4/5 lg:w-[90%] md:w-[95%] mx-auto px-5 py-2'>
+      <div className='flex  justify-between p-2 rounded-md border-2 border-gray-200 my-2 gap-x-2 '>
+       
+
+    
+    <div className='flex items-center gap-2 px-2 min-w-max'>
+      <p>Max Price</p>
+      <input type='range' min={100} max={2000} step={100}
+       onInput={()=>document.getElementById('rangeOutput').value=document.getElementById('rangeInput').value}
+        id='rangeInput' className='cursor-pointer bg-gray-500 accent-gray-600'/>
+      <output name='rangeOutput' id='rangeOutput'>100</output>
     </div>
 
-    <div className='flex gap-x-2 '>
-      <div className='m-auto px-5 py-1 flex bg-white rounded-md'>
-      <input type='number'  className='outline-none' placeholder='From YYYY' value={fromYear} onChange={(e)=>props.setFromYear(e.target.value)}/>
-      <FiCalendar className='m-auto'/>
-
-      </div>
-
-      <div className='m-auto px-5 py-1 flex bg-white rounded-md'>
-        <input type='number' className='outline-none' placeholder='To YYYY' value={toYear} onChange={(e)=>props.setToYear(e.target.value)}/>
-        <FiCalendar className='m-auto'/>
-
-      </div>
+    <div className='px-5 py-1 flex  rounded-md bg-gray-600 w-[70%]'>  
+        <FiSearch className='m-auto text-white'/>   
+    <input placeholder='Search your wishes' className='w-full px-4 py-1 rounded outline-none bg-inherit text-white' value={search} onChange={(e)=>props.setSearch(e.target.value)}/>
     </div>
+  
     <div className='px-4 py-1 rounded-md bg-white flex  gap-x-2'>
       <FiCreditCard className='m-auto'/>
         <select className='bg-white' name="Department" id="Department" placeholder='Department' value={department} onChange={(e)=>props.setDepartment(e.target.value)}>
-            <option value="">Department</option>
-  <option value="Computer Science">Computer Science</option>
-  <option value="Physics">Physics</option>
-  <option value="Mathematics">Mathematics</option>
-  <option value="Chemistry">Chemistry</option>
+            <option value="">Category</option>
+  <option value="Ethnic">Ethnic</option>
+  <option value="Casual">Casual</option>
+  <option value="Party wear">Party wear</option>
+  <option value="Lofer">Lofer</option>
 </select>
 </div>
 
@@ -61,7 +59,7 @@ const FilterBox = (props) => {
 {/* <div>
   <button className='hover:bg-[#7e22ce] hover:text-white text-black bg-white  px-2 rounded py-1 cursor-pointer '>Remove filter</button>
 </div> */}
-<div>
+<div className='flex min-w-max'>
   <button className='bg-gray-600 items-center text-white px-2 rounded py-1 cursor-pointer hover:opacity-50 m-auto' onClick={removeFilters}>Remove filter</button>
 </div>
 </div>
