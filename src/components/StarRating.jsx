@@ -16,7 +16,7 @@ const Rating = ({ rating,count }) => {
   }
   stars.push(<span className='text-sm my-auto'>{count}</span>)
  
-  return <div className="flex justify-center text-3xl  ">{stars}</div>;
+  return <div className="flex justify-center md:text-2xl text-lg lg:ext-3xl  ">{stars}</div>;
 };
 
 export default Rating;
