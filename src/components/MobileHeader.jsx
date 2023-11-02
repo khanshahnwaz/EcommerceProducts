@@ -1,10 +1,10 @@
-import React from "react";
+import React,{ useState} from "react";
 
 import { RxDoubleArrowLeft } from "react-icons/rx";
-import { TbBrandWindows } from "react-icons/tb";
-import { MdKeyboardArrowRight } from "react-icons/md";
+
 import SearchField from "./SearchField";
 import { FiCreditCard } from "react-icons/fi";
+import { useEffect } from "react";
 const MobileViews = (props) => {
   const removeFilters=()=>{
     props.setSearch('');
@@ -12,6 +12,12 @@ const MobileViews = (props) => {
     props.fetchData();
     
   }
+
+  const [category,setCategory]=useState(props.category)
+
+  useEffect(() => {
+    props.filterByCategory(category);
+  }, [category]);
   return (
     <div
       className={` lg:hidden w-full sm:w-max    h-full 
@@ -30,12 +36,14 @@ const MobileViews = (props) => {
         </div>
         <SearchField
           filterByCategory={props.filterByCategory}
+          search={props.search}
+          setSearch={props.setSearch}
         />
 
         <div className="w-full flex  p-2 rounded-md justify-between text-gray-500 bg-gray-600">
         <div className='p-3  cursor-pointer e flex  gap-x-2 border-2 border-gray-600 rounded-lg w-full'>
       <FiCreditCard className='my-auto'/>
-        <select className='bg-inherit text-gray-400 w-full' name="Department" id="Department" placeholder='Department' value={props.category} onChange={(e)=>props.setCategory(e.target.value)}>
+        <select className='bg-inherit text-gray-400 w-full' name="Category" id="Category" placeholder='Category' value={category} onChange={(e)=>setCategory(e.target.value)}>
             <option value="">Category</option>
   <option value="electronics">Electronics</option>
   <option value="jewelery">Jewelery</option>

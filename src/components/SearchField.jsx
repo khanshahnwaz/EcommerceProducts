@@ -14,7 +14,7 @@ const SearchField = ({filterByCategory,search,setSearch}) => {
 <ul
     className={`text-left   ${
       search && showSuggesstion ? ["bg-white"] : "hidden"
-    } font-semibold absolute left-10 -top-0 p-3 pr-10  z-10 text-gray-500`}
+    } font-semibold absolute left-10 -top-0 p-3 pr-10  z-10 text-gray-600`}
   >
     {suggestions.map((item, i) => {
       if (i <= 5)
